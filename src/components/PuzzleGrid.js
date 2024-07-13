@@ -27,11 +27,9 @@ export default function Puzzle({ data, onSolve }) {
       for (let col = 0; col < grid[row].length; col++) {
         const cellValue = grid[row][col];
         if (cellValue) {
-          // Check row
           if (grid[row].filter(value => value === cellValue).length > 1) {
             errors.push({ row, col });
           }
-          // Check column
           if (grid?.map(row => row[col]).filter(value => value === cellValue).length > 1) {
             errors.push({ row, col });
           }

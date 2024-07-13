@@ -1,4 +1,3 @@
-// src/pages/game.js
 import React, { useState } from 'react';
 import Timer from '../components/Timer';
 import { useQuery } from 'react-query';
@@ -18,7 +17,7 @@ const Game = () => {
 
     const handleSolve = () => {
         setSolved(true);
-        // Handle puzzle solved logic, e.g., save the score to the backend
+        // save the score to the backend
     };
 
     const handleDifficultyChange = (event) => {
