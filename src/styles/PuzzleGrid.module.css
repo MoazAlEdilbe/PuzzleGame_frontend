@@ -1,0 +1,37 @@
+.elements {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.element {
+  padding: 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.element.selected {
+  background-color: #d3d3d3;
+}
+
+.grid {
+  display: grid;
+  gap: 5px;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.cell.error {
+  background-color: #ffcccc;
+}
