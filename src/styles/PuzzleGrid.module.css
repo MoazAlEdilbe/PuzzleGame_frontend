@@ -1,12 +1,32 @@
+/* PuzzleGrid.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 10vh;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
 .elements {
   display: flex;
-  margin-bottom: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .element {
   padding: 10px;
   margin-right: 5px;
   cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.element:hover {
+  background-color: #e0e0e0;
 }
 
 .element.selected {
@@ -23,15 +43,30 @@
 }
 
 .cell {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid #ccc;
   cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cell:hover {
+  background-color: #f0f0f0;
 }
 
 .cell.error {
   background-color: #ffcccc;
+}
+
+/* h1 {
+  text-align: center;
+  margin-bottom: 20px;
+} */
+
+.timer {
+  font-size: 1.2em;
+  margin-bottom: 20px;
 }

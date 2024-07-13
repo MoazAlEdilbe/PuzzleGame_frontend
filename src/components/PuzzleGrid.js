@@ -1,10 +1,23 @@
 import { useState, useEffect } from 'react';
 import styles from '../styles/PuzzleGrid.module.css';
+import { generatePuzzle } from '@/utils/services/puzzle';
 
-export default function Puzzle({ data, onSolve }) {
+export default function Puzzle({ type, difficulty, onPuzzleGenerated, onSolve }) {
   const [grid, setGrid] = useState(null);
   const [selectedElement, setSelectedElement] = useState('');
-  const elements = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').slice(0, grid?.length);
+  const elements = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').slice(0, grid?.length || 0);
+
+  useEffect(() => {
+    generatePuzzle(type, difficulty)
+      .then((data) => {
+        const rows = data.data.split('\n').map(row => row.split(''));
+        setGrid(rows);
+        onPuzzleGenerated(data.time);
+      })
+      .catch((error) => {
+        console.error('Error fetching puzzle:', error);
+      });
+  }, [type, difficulty]);
 
   const handleCellClick = (rowIndex, colIndex) => {
     if (selectedElement) {
@@ -43,13 +56,6 @@ export default function Puzzle({ data, onSolve }) {
     const errors = checkErrors();
     return errors.length === 0 && grid?.every(row => row.every(cell => cell));
   };
-
-  useEffect(() => {
-    console.log(data);
-    const rows = data.split('\n').map(row => row.split(''));
-    setGrid(rows);
-  }, [data]);
-
 
   useEffect(() => {
     if (isSolved()) {
